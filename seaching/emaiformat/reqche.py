@@ -1,0 +1,81 @@
+import requests
+
+cookies = {
+    'src': '500',
+    'ctx': 'google_brand_india',
+    'cb': '1',
+    'cj2': 'Lw',
+    'gclid': 'Cj0KCQiAgJa6BhCOARIsAMiL7V96YynSKPZGsrgG-Ih5KnQV8JDWoKb3zOibyUSgRYGqGnN-Y-mcHFYaArhqEALw_wcB',
+    '_gcl_gs': '2.1.k1$i1732620793$u261506190',
+    '_gcl_aw': 'GCL.1732620797.Cj0KCQiAgJa6BhCOARIsAMiL7V96YynSKPZGsrgG-Ih5KnQV8JDWoKb3zOibyUSgRYGqGnN-Y-mcHFYaArhqEALw_wcB',
+    '_ga': 'GA1.1.832473097.1732620797',
+    '__ssid': '95a2655151ea49414039a820ab00b68',
+    'sourcePage': 'company_email_format',
+    '__uc': '"{\\"e_id\\":2755529\\054\\"e_type\\":2\\054\\"e_view\\":2\\054\\"e_locale\\":null}"',
+    '_clck': '1j3klyh%7C2%7Cfra%7C0%7C1791',
+    'g_csrf_token': 'c3e4dab22fabe3a7',
+    '_gcl_au': '1.1.2119072540.1732620796.1849084544.1732863192.1732863191',
+    'oauthSourcePage': 'company_email_format',
+    'd1': '"4/0AeanS0Yreb2b0mSpnHbiQVWzN0e0D0btQAP60iNaCmLZEJtDgDl98KCazPcaRoL5C49lBg"',
+    'validation_token': 'VQqbOiqla9d0RtQ8SUdfECQkXbdRpLx6',
+    'sessionid-20191028': 'm984ga2snksgcfnsuclec948g2nf472v',
+    'sessionid-20191028': 'm984ga2snksgcfnsuclec948g2nf472v',
+    '__hstc': '94151554.2d735e1c509f274a5af6548902bed737.1732863197331.1732863197331.1732863197331.1',
+    'hubspotutk': '2d735e1c509f274a5af6548902bed737',
+    '__hssrc': '1',
+    '__hssc': '94151554.3.1732863197331',
+    'OptanonConsent': 'isGpcEnabled=0&datestamp=Fri+Nov+29+2024+12%3A24%3A34+GMT%2B0530+(India+Standard+Time)&version=202409.1.0&browserGpcFlag=0&isIABGlobal=false&hosts=&consentId=3f972290-8841-4292-a807-a30a92761e22&interactionCount=0&isAnonUser=1&landingPath=NotLandingPage&groups=C0002%3A1%2CC0001%3A1%2CC0003%3A1%2CC0004%3A1&AwaitingReconsent=false',
+    '_uetsid': '579b88e0ae1e11ef9ca2e57222b2010c|ifbvfy|2|fra|0|1794',
+    '_uetvid': '3a3a4ab0abea11ef833c134f2e3c17dd|9tzf4u|1732863217487|2|1|bat.bing.com/p/insights/c/w',
+    '_clsk': 'wbv954%7C1732863306201%7C7%7C0%7Cw.clarity.ms%2Fcollect',
+    '_ga_FB8KKHJC7E': 'GS1.1.1732863080.2.1.1732863352.60.0.0',
+}
+
+headers = {
+    'accept': 'application/json, text/plain, */*',
+    'accept-language': 'en-US,en;q=0.9',
+    'content-type': 'application/json;charset=UTF-8',
+    # 'cookie': 'src=500; ctx=google_brand_india; cb=1; cj2=Lw; gclid=Cj0KCQiAgJa6BhCOARIsAMiL7V96YynSKPZGsrgG-Ih5KnQV8JDWoKb3zOibyUSgRYGqGnN-Y-mcHFYaArhqEALw_wcB; _gcl_gs=2.1.k1$i1732620793$u261506190; _gcl_aw=GCL.1732620797.Cj0KCQiAgJa6BhCOARIsAMiL7V96YynSKPZGsrgG-Ih5KnQV8JDWoKb3zOibyUSgRYGqGnN-Y-mcHFYaArhqEALw_wcB; _ga=GA1.1.832473097.1732620797; __ssid=95a2655151ea49414039a820ab00b68; sourcePage=company_email_format; __uc="{\\"e_id\\":2755529\\054\\"e_type\\":2\\054\\"e_view\\":2\\054\\"e_locale\\":null}"; _clck=1j3klyh%7C2%7Cfra%7C0%7C1791; g_csrf_token=c3e4dab22fabe3a7; _gcl_au=1.1.2119072540.1732620796.1849084544.1732863192.1732863191; oauthSourcePage=company_email_format; d1="4/0AeanS0Yreb2b0mSpnHbiQVWzN0e0D0btQAP60iNaCmLZEJtDgDl98KCazPcaRoL5C49lBg"; validation_token=VQqbOiqla9d0RtQ8SUdfECQkXbdRpLx6; sessionid-20191028=m984ga2snksgcfnsuclec948g2nf472v; sessionid-20191028=m984ga2snksgcfnsuclec948g2nf472v; __hstc=94151554.2d735e1c509f274a5af6548902bed737.1732863197331.1732863197331.1732863197331.1; hubspotutk=2d735e1c509f274a5af6548902bed737; __hssrc=1; __hssc=94151554.3.1732863197331; OptanonConsent=isGpcEnabled=0&datestamp=Fri+Nov+29+2024+12%3A24%3A34+GMT%2B0530+(India+Standard+Time)&version=202409.1.0&browserGpcFlag=0&isIABGlobal=false&hosts=&consentId=3f972290-8841-4292-a807-a30a92761e22&interactionCount=0&isAnonUser=1&landingPath=NotLandingPage&groups=C0002%3A1%2CC0001%3A1%2CC0003%3A1%2CC0004%3A1&AwaitingReconsent=false; _uetsid=579b88e0ae1e11ef9ca2e57222b2010c|ifbvfy|2|fra|0|1794; _uetvid=3a3a4ab0abea11ef833c134f2e3c17dd|9tzf4u|1732863217487|2|1|bat.bing.com/p/insights/c/w; _clsk=wbv954%7C1732863306201%7C7%7C0%7Cw.clarity.ms%2Fcollect; _ga_FB8KKHJC7E=GS1.1.1732863080.2.1.1732863352.60.0.0',
+    'origin': 'https://rocketreach.co',
+    'priority': 'u=1, i',
+    'referer': 'https://rocketreach.co/company?start=1&pageSize=10&keyword=abb',
+    'sec-ch-ua': '"Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"',
+    'sec-ch-ua-mobile': '?0',
+    'sec-ch-ua-platform': '"Windows"',
+    'sec-fetch-dest': 'empty',
+    'sec-fetch-mode': 'cors',
+    'sec-fetch-site': 'same-origin',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
+    'x-csrftoken': 'EEnq1Wm8fWxObnWHVozPNRS8riVRvGnJpkDrF4CjfVAESGCFD8CUhjyiejYyKhKF',
+    'x-rr-for': '03acaf6fa7ab1d40e7c88e39ee61221c',
+    'x-source-page': '/company',
+}
+
+json_data = {
+    'start': 2,
+    'pageSize': 10,
+    'excludeContacts': False,
+    'searchEventsSessionId': '3e3f957e-730a-4dc4-b19b-15664b09ef15',
+    'company_name': '',
+    'company_keyword': 'abb',
+    'company_domain': '',
+    'company_industry': [],
+    'company_industry_keywords': [],
+    'company_sic_code': [],
+    'company_naics_code': [],
+    'company_geo': [],
+    'company_competitors': [],
+    'company_employees': None,
+    'company_growth': None,
+    'company_revenue': None,
+    'company_intent': [],
+    'company_news_timestamp': [],
+    'company_link': '',
+    'company_description': '',
+    'techstack': [],
+}
+
+response = requests.post('https://rocketreach.co/v2/services/search/company', cookies=cookies, headers=headers, json=json_data)
+data = response.json()
+print(data)
+print(len(data['companies']))
